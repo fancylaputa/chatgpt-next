@@ -38,33 +38,33 @@ export enum Role {
  * ChatGPT 模型
  */
 export enum Model {
-  'gpt-3.5-turbo' = 'gpt-3.5-turbo',
-  'gpt-3.5-turbo-16k' = 'gpt-3.5-turbo-16k',
   'gpt-4' = 'gpt-4',
+  'gpt-3.5-turbo' = 'gpt-3.5-turbo',
+  'gpt-3.5-turbo-16k' = 'gpt-3.5-turbo-16k',  
   'gpt-4-32k' = 'gpt-4-32k',
   'gpt-4-vision-preview' = 'gpt-4-vision-preview',
 }
 
 export const AllModels = [
+  Model['gpt-4'],
   Model['gpt-3.5-turbo'],
   Model['gpt-3.5-turbo-16k'],
-  Model['gpt-4'],
   Model['gpt-4-32k'],
   Model['gpt-4-vision-preview'],
 ];
 
 export const MIN_TOKENS: Record<Model, number> = {
+  [Model['gpt-4']]: 1024,
   [Model['gpt-3.5-turbo']]: 1024,
   [Model['gpt-3.5-turbo-16k']]: 1024,
-  [Model['gpt-4']]: 1024,
   [Model['gpt-4-32k']]: 1024,
   [Model['gpt-4-vision-preview']]: 1024,
 };
 
 export const MAX_TOKENS: Record<Model, number> = {
+  [Model['gpt-4']]: 8192,
   [Model['gpt-3.5-turbo']]: 4096,
   [Model['gpt-3.5-turbo-16k']]: 16384,
-  [Model['gpt-4']]: 8192,
   [Model['gpt-4-32k']]: 32768,
   [Model['gpt-4-vision-preview']]: 4096,
 };
