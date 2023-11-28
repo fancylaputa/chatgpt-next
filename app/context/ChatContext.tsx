@@ -64,7 +64,7 @@ export const ChatProvider: FC<{ children: ReactNode }> = ({ children }) => {
     let settings = getCache<SettingsState>('settings');
     // 如果检测到缓存中有上次还未存储到 cache 的 message，则加入到 history 中
     if (messages && messages.length > 0) {
-      history = [{ model: settings?.model ?? Model['gpt-3.5-turbo'], messages }, ...(history ?? [])];
+      history = [{ model: settings?.model ?? Model['gpt-4'], messages }, ...(history ?? [])];
       setHistory(history);
       setCache('history', history);
       setMessages([]);
@@ -234,7 +234,7 @@ export const ChatProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
 
       const oldModel = settings.model;
-      const newModel = history?.[index].model ?? Model['gpt-3.5-turbo'];
+      const newModel = history?.[index].model ?? Model['gpt-4'];
 
       if (historyIndex === 'empty') {
         setHistoryIndex(index);
@@ -306,7 +306,7 @@ export const ChatProvider: FC<{ children: ReactNode }> = ({ children }) => {
         const newIndex = history && history.length > 0 ? 0 : 'empty';
         setHistoryIndex(newIndex);
         if (typeof newIndex === 'number') {
-          const newModel = history?.[newIndex].model ?? Model['gpt-3.5-turbo'];
+          const newModel = history?.[newIndex].model ?? Model['gpt-4'];
           setSettings({
             model: newModel,
           });
@@ -328,7 +328,7 @@ export const ChatProvider: FC<{ children: ReactNode }> = ({ children }) => {
       const newIndex = newHistory && newHistory.length > 0 ? Math.min(deleteIndex, newHistory.length - 1) : 'empty';
       setHistoryIndex(newIndex);
       if (typeof newIndex === 'number') {
-        const newModel = newHistory[newIndex].model ?? Model['gpt-3.5-turbo'];
+        const newModel = newHistory[newIndex].model ?? Model['gpt-4'];
         setSettings({
           model: newModel,
         });
